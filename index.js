@@ -19,3 +19,7 @@ const port = process.env.PORT || 3001;
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 });
+
+app.get('/', function (req, res) {
+    res.send("Welcome to the API for titleForUrl!");
+});
