@@ -7,7 +7,7 @@ router.get('/title', async (req, res) => {
     try {
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                res.send(body);
+                res.send(parseTitle(body));
             }
             res.status(500).send({ error: error.message });
         })
@@ -17,7 +17,7 @@ router.get('/title', async (req, res) => {
 });
 
 const parseTitle = (body) => {
-    let match = body.match("/<title>([^<]*)<\/title>/")
+    let match = body.match(/<title>([^<]*)<\/title>/)
     if (!match || typeof match[1] !== 'string')
       throw new Error('Unable to parse the title tag')
     return match[1]
