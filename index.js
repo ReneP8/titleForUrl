@@ -2,7 +2,9 @@ import express, { json } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import titleRoute from './routes/title.js';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+import cors from 'cors';
+
 const app = express();
 
 dotenv.config();
@@ -11,6 +13,7 @@ dotenv.config();
 app.use(morgan('common'));
 app.use(json());
 app.use(helmet());
+app.use(cors());
 
 // enable routes
 app.use('/api', titleRoute);
