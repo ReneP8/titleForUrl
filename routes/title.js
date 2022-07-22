@@ -9,10 +9,12 @@ router.get('/title', async (req, res) => {
             if (!error && response.statusCode == 200) {
                 res.send({title: parseTitle(body)});
             } else {
+                console.dir(error);
                 res.status(500).send({ error: error });
             }
         })
     } catch (error) {
+        console.dir(error);
         res.status(500).send({ error: error.message });
     }
 });
