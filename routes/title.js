@@ -7,7 +7,7 @@ router.get('/title', async (req, res) => {
     try {
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                res.send({title: parseTitle(body)});
+                res.send({ title: body });
             } else {
                 console.dir(error);
                 res.status(500).send({ error: error });
